@@ -1,0 +1,1 @@
+import type { MetadataRoute } from 'next'; export default function sitemap(): MetadataRoute.Sitemap { return ['','/empresa','/servicos','/projetos','/contato','/politica-de-privacidade'].map(path=>({url:`https://usinoxusinagem.com.br${path}`,lastModified:new Date()})) }
