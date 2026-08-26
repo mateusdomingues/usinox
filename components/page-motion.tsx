@@ -22,12 +22,14 @@ export function PageMotion({ children }: { children: React.ReactNode }) {
       if (heroItems.length) gsap.from(heroItems, { y: 28, autoAlpha: 0, duration: 0.85, stagger: 0.08, delay: 0.12, ease: 'power3.out' })
       gsap.utils.toArray<HTMLElement>('.section, .dark-section, footer').forEach((section) => {
         const items = section.querySelectorAll(':scope > *, .service-card, .step, .material-feature > *')
-        gsap.from(items, {
-          y: 30,
-          autoAlpha: 0,
+        if (!items.length) return
+        gsap.fromTo(items, { y: 30, opacity: 0 }, {
+          y: 0,
+          opacity: 1,
           duration: 0.75,
           stagger: 0.07,
           ease: 'power2.out',
+          immediateRender: false,
           scrollTrigger: { trigger: section, start: 'top 82%', once: true },
         })
       })
